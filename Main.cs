@@ -47,7 +47,7 @@ namespace DuskersGive {
 
 					if (command.Arguments.Count >= 1) {
 						string upgrade = command.Arguments.Join(null, " ");
-						DroneUpgradeDefinition definition = DroneUpgradeFactory.UpgradeDefinitions.Find((DroneUpgradeDefinition def) => def.Name.ToLower() == upgrade);
+						DroneUpgradeDefinition definition = DroneUpgradeFactory.UpgradeDefinitions.Find((DroneUpgradeDefinition def) => def.Name.ToLowerInvariant() == upgrade.ToLowerInvariant());
 
 						if (definition != null) {
 							if (__instance.NumberOfUpgradesInstalled() == 3) {
