@@ -45,8 +45,8 @@ namespace DuskersGive {
 				if (active && command.Command.CommandName == "give") { // just in case unpatch fails
 					command.Handled = true;
 
-					if (command.Arguments.Count == 1) {
-						string upgrade = command.Arguments[0];
+					if (command.Arguments.Count >= 1) {
+						string upgrade = command.Arguments.Join(null, " ");
 						DroneUpgradeDefinition definition = DroneUpgradeFactory.UpgradeDefinitions.Find((DroneUpgradeDefinition def) => def.Name.ToLower() == upgrade);
 
 						if (definition != null) {
@@ -62,7 +62,7 @@ namespace DuskersGive {
 							ConsoleWindow3.SendConsoleResponse(string.Format("could not locate upgrade {0}.\n'help give' for usage.", upgrade), ConsoleMessageType.Info);
 						}
 					} else {
-						ConsoleWindow3.SendConsoleResponse("invalid parameter count (expecting one).\n'help give' for usage.", ConsoleMessageType.Info);
+						ConsoleWindow3.SendConsoleResponse("invalid parameter count (expecting one or more).\n'help give' for usage.", ConsoleMessageType.Info);
 					}
 				}
 			}
