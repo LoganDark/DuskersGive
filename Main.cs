@@ -16,7 +16,14 @@ namespace DuskersGive {
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		static bool Load(UnityModManager.ModEntry entry) {
 			commands = CommandHelper.GetCommands("Drone");
-			command = new CommandDefinition("give", "gives a drone any upgrade", "give 1 teleport", ((int)ConsoleCommandTarget.Drone).ToString(), "false", "false", "false", "Drone", "false", "false", "false", "false");
+			command = new CommandDefinition("give", "gives a drone any upgrade", "give 1 teleport", ((int)ConsoleCommandTarget.Drone).ToString(), "false", "false", "false", "Drone", "true", "false", "false", "false");
+			command.DetailedDescription.Add(new ConsoleMessage("\t\tAllows you to give your drone any upgrade.", ConsoleMessageType.Info, ConsoleMessageFormat.SmallFont));
+			command.DetailedDescription.Add(new ConsoleMessage("\t\t", ConsoleMessageType.Info, ConsoleMessageFormat.SmallFont));
+			command.DetailedDescription.Add(new ConsoleMessage("\t\t'give'               Lists all giveable upgrades", ConsoleMessageType.Info, ConsoleMessageFormat.SmallFont));
+			command.DetailedDescription.Add(new ConsoleMessage("\t\t'give 1 2 teleport'  Gives drones 1 and 2 a Teleport upgrade", ConsoleMessageType.Info, ConsoleMessageFormat.SmallFont));
+			command.DetailedDescription.Add(new ConsoleMessage("\t\t'give speed boost i' Gives your current drone a Speed Boost I upgrade", ConsoleMessageType.Info, ConsoleMessageFormat.SmallFont));
+			command.DetailedDescription.Add(new ConsoleMessage("\t\t", ConsoleMessageType.Info, ConsoleMessageFormat.SmallFont));
+			command.DetailedDescription.Add(new ConsoleMessage("\t\tGive mod by <color=#00c2ff>Logan</color><color=#f04040>Dark</color>.", ConsoleMessageType.Info, ConsoleMessageFormat.SmallFont));
 			harmony = new Harmony(entry.Info.Id);
 
 			entry.OnToggle = OnToggle;
