@@ -65,7 +65,7 @@ namespace DuskersGive {
 						DroneUpgradeDefinition definition = DroneUpgradeFactory.UpgradeDefinitions.Find((DroneUpgradeDefinition def) => def.Name.ToLowerInvariant() == upgrade.ToLowerInvariant());
 
 						if (definition != null) {
-							if (__instance.NumberOfUpgradesInstalled() == 3) {
+							if (__instance.NumberOfUpgradesInstalled() >= __instance.NumberOfUpgradeSlots) {
 								ConsoleWindow3.SendConsoleResponse(string.Format("drone {0} has no free upgrade slots", __instance.DroneNumber), ConsoleMessageType.Error);
 							} else if (!__instance.CanAddDroneUpgrade(definition)) {
 								ConsoleWindow3.SendConsoleResponse(string.Format("drone {0} cannot take that upgrade", __instance.DroneNumber), ConsoleMessageType.Error);
